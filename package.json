@@ -1,0 +1,44 @@
+{
+  "name": "mint-my-token-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tim Holmes-Mitra <tim.holmes.mitra@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --ext js,graphql --exec 'npx babel-node --inspect -r node_modules/dotenv/config ./src/index.js dotenv_config_path=./.env.development'",
+    "build": "npx babel -s false -d build src",
+    "start": "node build/index.js",
+    "deploy": "gcloud app deploy backend.yml --project mint-my-token"
+  },
+  "dependencies": {
+    "apollo-errors": "^1.9.0",
+    "dotenv": "^6.2.0",
+    "ethers": "^4.0.18",
+    "graphql-yoga": "^1.16.7",
+    "mongoose": "^5.3.16",
+    "morgan": "^1.9.1",
+    "nodemailer": "^4.7.0",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "stripe": "^6.19.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "latest",
+    "@babel/core": "latest",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "latest",
+    "nodemon": "1.18.8"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": true
+          }
+        }
+      ]
+    ]
+  }
+}

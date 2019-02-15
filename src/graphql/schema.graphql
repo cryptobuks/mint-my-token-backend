@@ -1,0 +1,48 @@
+type Mutation {
+  payForToken(stripeId: String!, token: TokenParametersInput!): Result
+}
+
+type Query {
+  order(id: String!): Order
+  recentOrders: [TickerOrder]!
+}
+
+type Result {
+  success: Boolean!
+  message: String!
+}
+
+type TickerOrder {
+  name: String!
+  symbol: String!
+  contractAddress: String!
+  createdAt: String!
+}
+
+type Order {
+  id: String!
+  token: Token!
+  terms: String!
+  stripeId: String!
+}
+
+type Token {
+  name: String!
+  symbol: String!
+  supply: String!
+  decimals: Int!
+  walletAddress: String!
+  transactionId: String!
+  contractAddress: String!
+}
+
+input TokenParametersInput {
+  email: String!
+  name: String!
+  symbol: String!
+  supply: String!
+  decimals: Int!
+  walletAddress: String!
+  terms: Boolean!
+  meta: String
+}
